@@ -1,0 +1,1 @@
+Eframe : Eframe is a web application built for the purpose of providing the organization better understanding of their assets such as email address and their presence on various platform and what possible attack vector can be developed against the victims.

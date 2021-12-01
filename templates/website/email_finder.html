@@ -1,0 +1,54 @@
+{% extends 'website/base.html' %}
+
+
+{% block content %}
+
+<div class="container px-4 py-4 text-center">
+    <h1><b>Email Presence </b></h1>
+    <p>eframe lets you find professional email addresses in seconds</p>
+    <div class="card border-warning mb-3 px-4 py-4 bg-light" >
+        <div class="card-body">
+            <form action="/email_finder" method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+            <input type="text" name="domain" aria-label="Last name" class="form-control" placeholder="domain">
+                <input type="text" name="firstname" aria-label="First name" class="form-control" placeholder="firstname">
+                <input type="text" name="lastname" aria-label="Last name" class="form-control" placeholder="lastname">
+                <button class="btn btn-outline-success">Search</button>
+              </div>
+              </form>
+        </div>
+      </div>
+      {% if email ==  "Not found"  %}
+      
+      <h3>Not found</h3>
+      {% else %}
+      <table class="table table-borderless">
+        <tbody>
+            {% for ema in email  %}
+          <tr>
+            <th scope="row">{{ema}}</th>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+      {% endif %}
+      
+      <div class="row">
+          <div class="col">
+              <img src="https://logo.clearbit.com/google.com" alt="">
+          </div>
+          <div class="col">
+              <img src="https://logo.clearbit.com/ibm.com" alt="">
+          </div>
+          <div class="col">
+              <img src="https://logo.clearbit.com/microsoft.com" alt="">
+          </div>
+      </div>
+</div>
+<hr>
+
+{% endblock content %}
+
+

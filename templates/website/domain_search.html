@@ -1,0 +1,51 @@
+{% extends 'website/base.html' %}
+
+
+{% block content %}
+
+
+<div class="container px-4 py-4 text-center">
+    <h1><b>Domain search </b></h1>
+    <p>eframe lets you find professional email addresses in seconds</p>
+    <div class="card border-warning mb-3 px-4 py-4 bg-light" >
+        <div class="card-body">
+            <form action="/domain_search" method="POST">
+            {% csrf_token %}
+                <input class="large" size="70%" type="text" name="domain" id="domain" placeholder="company.com"> <button class="btn btn-primary">Find email address search</button>
+                <p class="mt-2"><b class="text-secondary">Enter a domain name to launch the search.</b></p>
+            </form>
+        </div>
+      </div>
+      {% if email ==  "Not found"  %}
+      
+      <h3>Not found</h3>
+      {% else %}
+      <table class="table table-borderless">
+        <tbody>
+            {% for ema in email  %}
+          <tr>
+            <th scope="row">{{ema}}</th>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+      {% endif %}
+      
+      <div class="row">
+          <div class="col">
+              <img src="https://logo.clearbit.com/google.com" alt="">
+          </div>
+          <div class="col">
+              <img src="https://logo.clearbit.com/ibm.com" alt="">
+          </div>
+          <div class="col">
+              <img src="https://logo.clearbit.com/microsoft.com" alt="">
+          </div>
+      </div>
+</div>
+<hr>
+
+{% endblock content %}
+
+
